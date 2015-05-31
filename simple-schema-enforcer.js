@@ -41,6 +41,8 @@ SimpleSchemaEnforcer.prototype.parseError = function(meteorError) {
 
   _.each(errorDetails, function(err){
     
+    err.name = err.name.replace(/(\.(\d)+)/g,'.$');
+
     console.error('Schema Error:', err.type,'@', err.name);
     
     var inputID = self._errorHandlers[err.name]['inputID'];
