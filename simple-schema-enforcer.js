@@ -37,7 +37,14 @@ SimpleSchemaEnforcer.prototype.parseError = function(meteorError) {
 
   var errorDetails = meteorError.details;
 
-  $('.simple-schema-enforcer-error').removeClass('simple-schema-enforcer-error');
+  _.each(self._errorHandlers, function (e) 
+    {
+      if (e.inputID !== undefined)
+        $('#' + e.inputID + ' .simple-schema-enforcer-error').removeClass('simple-schema-enforcer-error');
+    });
+
+  
+
 
   _.each(errorDetails, function(err){
     
