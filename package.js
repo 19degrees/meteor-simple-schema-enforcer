@@ -1,6 +1,6 @@
 Package.describe({
   name: '19degrees:simple-schema-enforcer',
-  version: '0.1.4',
+  version: '0.1.5',
   // Brief, one-line summary of the package.
   summary: 'Wrapper around aldeed:simple-schema. Enforces schema & allows error handlers to be attached.',
   // URL to the Git repository containing the source code for this package.

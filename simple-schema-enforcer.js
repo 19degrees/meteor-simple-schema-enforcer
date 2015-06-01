@@ -13,6 +13,12 @@ SimpleSchemaEnforcer.prototype.validate = function(data, keys) {
 
   var context = self._simpleSchema.newContext();
 
+  _.each(self._errorHandlers, function (e) 
+    {
+      if (e.inputID !== undefined)
+        $('#' + e.inputID + '.simple-schema-enforcer-error').removeClass('simple-schema-enforcer-error');
+    });
+
   if (keys !== undefined) {
     _.each(keys, function(k) {
       context.validateOne(data, k);
@@ -36,12 +42,6 @@ SimpleSchemaEnforcer.prototype.parseError = function(meteorError) {
   console.error('Error:', meteorError.error, '-', meteorError.reason);
 
   var errorDetails = meteorError.details;
-
-  _.each(self._errorHandlers, function (e) 
-    {
-      if (e.inputID !== undefined)
-        $('#' + e.inputID + '.simple-schema-enforcer-error').removeClass('simple-schema-enforcer-error');
-    });
 
   
 
